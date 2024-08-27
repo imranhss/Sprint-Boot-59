@@ -6,24 +6,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-import java.util.List;
-
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Faculties")
-public class Faculty {
+@Table(name = "users")
+public class User {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  int id;
-    @Column(nullable = false, unique = true, length = 40)
-    private  String name;
+    private Integer id;
 
-    @Column(nullable = false)
-    private  int totalSeat;
+    private String name;
 
+    @Column(unique = true)
+    private String email;
+    private String password;
+    private String image;
 
 }

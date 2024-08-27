@@ -1,8 +1,7 @@
 package com.emranhss.FirstSpringBoot.restcontroller;
 
-import com.emranhss.FirstSpringBoot.entity.Department;
+
 import com.emranhss.FirstSpringBoot.entity.Faculty;
-import com.emranhss.FirstSpringBoot.service.DepartmentService;
 import com.emranhss.FirstSpringBoot.service.FacultyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/faculty")
+@CrossOrigin("*")
 public class FacultyRestController {
 
     @Autowired

@@ -26,6 +26,9 @@ public class Student {
     private  String gender;
 
     private Date dob;
+    @ManyToOne
+    @JoinColumn(name = "departmentId")
+    private Department department;
 
 
 }

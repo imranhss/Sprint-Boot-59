@@ -1,6 +1,8 @@
 package com.emranhss.FirstSpringBoot.service;
 
+import com.emranhss.FirstSpringBoot.entity.Department;
 import com.emranhss.FirstSpringBoot.entity.Student;
+import com.emranhss.FirstSpringBoot.repository.DepartmentRepository;
 import com.emranhss.FirstSpringBoot.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -19,8 +21,16 @@ public class StudentService{
 
     @Autowired
     private  StudentRepository studentRepository;
+  @Autowired
+    private DepartmentRepository departmentRepository;
 
     public  void saveStu(Student s){
+
+        Department d=departmentRepository.findById(s.getDepartment().getId())
+                        .orElseThrow(
+                                ()-> new RuntimeException("Student Not Saved ")
+                        );
+        s.setDepartment(d);
         studentRepository.save(s);
     }
 

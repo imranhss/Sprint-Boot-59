@@ -21,14 +21,7 @@ public class FacultyService {
 
     public  void saveFaculty(Faculty f){
 
-        Department newDep=departmentRepository.findById(f.getDepartment()
-                .getId())
-                .get();
-
-        f.setDepartment(newDep);
-
-
-        facultyRepository.save(f);
+         facultyRepository.save(f);
     }
 
     public List<Faculty>  getAllFaculty(){
