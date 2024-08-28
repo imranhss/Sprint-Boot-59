@@ -1,6 +1,5 @@
 package com.emranhss.FirstSpringBoot.service;
 
-import com.emranhss.FirstSpringBoot.entity.Faculty;
 import com.emranhss.FirstSpringBoot.entity.User;
 import com.emranhss.FirstSpringBoot.repository.UserRepository;
 import jakarta.mail.MessagingException;
@@ -63,7 +62,7 @@ public class UserService {
         return filename; // Return the filename for storing in the database
     }
 
-    public List<User> getAllUser(){
+    public List<User> getAllUsers(){
 
         return  userRepository.findAll();
     }
