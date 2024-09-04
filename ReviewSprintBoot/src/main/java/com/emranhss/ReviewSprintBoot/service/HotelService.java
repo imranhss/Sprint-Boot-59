@@ -35,6 +35,7 @@ public class HotelService {
     }
 
 
+    @Transactional
     public void saveHotel(Hotel hotel, MultipartFile imageFile) throws IOException {
 
         Location location=locationRepository.findById(hotel.getLocation().getId())

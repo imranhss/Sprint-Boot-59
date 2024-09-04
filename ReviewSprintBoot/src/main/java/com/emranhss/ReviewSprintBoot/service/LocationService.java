@@ -2,6 +2,7 @@ package com.emranhss.ReviewSprintBoot.service;
 
 import com.emranhss.ReviewSprintBoot.entity.Location;
 import com.emranhss.ReviewSprintBoot.repository.LocationRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 @Service
 public class LocationService {
 
+    @Autowired
      private LocationRepository locationRepository;
 
      public List<Location> getALlLocation(){
