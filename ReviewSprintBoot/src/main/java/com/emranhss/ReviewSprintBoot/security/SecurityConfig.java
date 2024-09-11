@@ -33,7 +33,7 @@ public class SecurityConfig {
                         .authorizeHttpRequests(
 
                                 req ->
-                                        req.requestMatchers("/login", "/register", "api/hotel/", "api/room/")
+                                        req.requestMatchers("/login", "/register", "api/hotel/", "api/room/","/activate/**")
                                                 .permitAll()
                                                 .requestMatchers("api/hotel/save", "api/room/save")
                                                 .hasAuthority("ADMIN")
