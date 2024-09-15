@@ -2,7 +2,6 @@ package com.emranhss.ReviewSprintBoot.entity;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -38,8 +37,8 @@ public class User implements UserDetails {
 
     @Column(nullable = false)
     private boolean active;
-    @Column(nullable = false)
-    private boolean lock;
+    @Column()
+    private boolean isLock;
 
 
     @Enumerated(value = EnumType.STRING)
@@ -71,7 +70,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return lock;
+        return isLock;
     }
 
     @Override
