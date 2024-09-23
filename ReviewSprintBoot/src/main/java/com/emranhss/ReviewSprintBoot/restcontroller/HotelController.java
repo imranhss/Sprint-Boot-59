@@ -11,32 +11,21 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/hotel")
-@CrossOrigin("*")
+
 public class HotelController {
 
     @Autowired
    private HotelService hotelService;
 
 
-//    @PostMapping("/save")
-//    public ResponseEntity<String> saveHotel(
-//            @RequestPart(value = "hotel") Hotel hotel,
-//            @RequestParam(value = "image", required = true)MultipartFile file
-//    ) throws IOException {
-//
-//        hotelService.saveHotel(hotel,file);
-//
-//        return new ResponseEntity<>("Hotel added successfully with image.", HttpStatus.OK);
-//
-//    }
-
-
     @PostMapping("/save")
-    public ResponseEntity<String> saveHotel(
+    public ResponseEntity<Map<String, String>> saveHotel(
             @RequestPart(value = "hotel") String hotelJson,
             @RequestPart(value = "image") MultipartFile file
     ) throws IOException {
@@ -48,11 +37,19 @@ public class HotelController {
         // Save the hotel and the image
         try {
             hotelService.saveHotel(hotel, file);
-            return new ResponseEntity<>("Hotel added successfully with image.", HttpStatus.OK);
+
+            // Create a response map
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Hotel added successfully");
+            return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>("Failed to add hotel: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            // Return error as JSON
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Failed to add hotel: " + e.getMessage());
+            return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 
 
 
